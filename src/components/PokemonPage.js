@@ -3,6 +3,7 @@ import PokemonCollection from './PokemonCollection'
 import PokemonForm from './PokemonForm'
 import Search from './Search'
 import { Container } from 'semantic-ui-react'
+import TestComponent from './TestComponent'
 
 class PokemonPage extends React.Component {
 
@@ -33,6 +34,9 @@ class PokemonPage extends React.Component {
         <br />
         <Search onChange={() => console.log('🤔')} />
         <br />
+        <br /><br /><br />
+        <TestComponent />
+        <br /><br /><br />
         <PokemonCollection pokeIndex={this.state.pokeIndex} />
       </Container>
     )

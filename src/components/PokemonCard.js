@@ -4,7 +4,7 @@ import { Card } from 'semantic-ui-react'
 class PokemonCard extends React.Component {
 
   componentDidMount() {
-    console.log(this.props.name)
+    
   }
 
   render() {
