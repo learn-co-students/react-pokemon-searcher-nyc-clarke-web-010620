@@ -8,7 +8,9 @@ import TestComponent from './TestComponent'
 class PokemonPage extends React.Component {
 
   state = {
-    pokeIndex: []
+    pokeIndex: [],
+    searchQuery: '',
+    hpQuery: 0
   }
 
   componentDidMount() {
@@ -25,16 +27,33 @@ class PokemonPage extends React.Component {
     this.setState({ pokeIndex: pokemons })
   }
 
+  handleSearch = (e) => {
+    this.setState({ searchQuery: e.target.value })
+  }
+
+  handleHpSearch = e => {
+    this.setState({ hpQuery: e.target.value })
+  }
+
   render() {
+    let filteredPokemon = this.state.pokeIndex.filter(p => 
+      p.name.toLowerCase().includes(this.state.searchQuery.toLowerCase())
+    )
+    let finalPokemon = filteredPokemon.filter(p => 
+      p.stats[5].value >= this.state.hpQuery
+    )
+
     return (
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
         <PokemonForm />
         <br />
-        <Search onChange={() => console.log('🤔')} />
-        <br />
-        <PokemonCollection pokeIndex={this.state.pokeIndex} />
+        <Search onChange={this.handleSearch} />
+        <br /> 
+        <input onChange={this.handleHpSearch} />
+        <br /><br />
+        <PokemonCollection pokeIndex={finalPokemon} />
       </Container>
     )
   }

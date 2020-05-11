@@ -35,6 +35,18 @@ class PokemonCard extends React.Component {
     }
   }
 
+  showHp = () => {
+    if (this.props.stats.length > 1) {
+      return (
+        <span>{this.props.stats[5].value}</span>
+      )
+    } else {
+      return (
+        <span>{this.props.stats[0].value}</span>
+      )
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -48,7 +60,7 @@ class PokemonCard extends React.Component {
           <div className="extra content">
             <span>
               <i className="icon heartbeat red" />
-              {this.props.stats[5].value}
+              {this.showHp()}
             </span>
           </div>
         </div>
