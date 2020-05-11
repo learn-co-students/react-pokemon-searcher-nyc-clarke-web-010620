@@ -34,9 +34,6 @@ class PokemonPage extends React.Component {
         <br />
         <Search onChange={() => console.log('🤔')} />
         <br />
-        <br /><br /><br />
-        <TestComponent />
-        <br /><br /><br />
         <PokemonCollection pokeIndex={this.state.pokeIndex} />
       </Container>
     )
